@@ -71,7 +71,7 @@ const sms = new getSMS({
                      //Wait for code
                      await sms.getCode(id).then(async({id, code}) => {
                         console.log('Code:', code);
-                        await sms.setStatus(id, 6); //Accept, end
+                        await sms.setStatus(1, id); //Accept, end
                      });
                 }) 
                .catch((error) => {
