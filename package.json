@@ -1,0 +1,36 @@
+{
+  "name": "getsms",
+  "version": "1.0.0",
+  "description": "SMSHub API, SMS-ACTIVATE API module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "dependencies": {
+    "request-promise": "^4.2.6"
+  },
+  "keywords": [
+    "smshub",
+    "sms",
+    "smsapi",
+    "sms-api",
+    "sms-hub",
+    "smshub-api",
+    "sms",
+    "gate",
+    "smsgateway"
+  ],
+  "author": {
+    "name": "Maxim Telegin (viiprogrammer)",
+    "email": "m_telega@mail.ru"
+  },
+  "bugs": {
+    "url": "https://github.com/Viiprogrammer/getSMS/issues"
+  },
+  "homepage": "https://github.com/Viiprogrammer/getSMS#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Viiprogrammer/getSMS.git"
+  },
+  "license": "MIT"
+}
