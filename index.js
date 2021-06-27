@@ -1,4 +1,4 @@
-const request = require('request-promise');
+const fetch = require('node-fetch');
 const errorsList = {
     BAD_KEY: 'Invalid api key',
     ERROR_SQL: 'Server database error',
@@ -58,19 +58,19 @@ class getSMS {
         this.interval = interval || 2000;
     }
     async request(qs){
-        let options = {
-            method: 'GET',
-            uri: this.url,
-            qs,
-            resolveWithFullResponse: true
-        };
-        options.qs.api_key = this.key;
-        return request(options)
-            .then(function (response) {
-                if(!ServiceApiError.check(response.body)){
-                    return response.body
+        let url = new URL(this.url)
+            url.search = new URLSearchParams(
+                Object.assign(qs, {api_key: this.key})
+            ).toString();
+
+        return fetch(url)
+            .then(async (response) => {
+                const data = await response.text();
+
+                if(!ServiceApiError.check(data)){
+                    return data;
                 } else {
-                    throw new ServiceApiError(response.body);
+                    throw new ServiceApiError(data);
                 }
             });
     }
@@ -83,7 +83,7 @@ class getSMS {
     getBalance(){
         return this.request({action: 'getBalance'})
             .then((response) => {
-                const [text, balance] = response.split(':');
+                const [, balance] = response.split(':');
                 const balanceParsed = parseFloat(balance);
                 return {
                     balance_string: balance,
@@ -103,7 +103,7 @@ class getSMS {
     getAdditionalService(id, service){
         return this.request({action: 'getAdditionalService', id, service})
             .then((response) => {
-                let [text, id, number] = response.split(':');
+                let [, id, number] = response.split(':');
                 return {
                     id,
                     number
@@ -140,7 +140,7 @@ class getSMS {
     getNumber(service, operator, country, forward, phoneException, ref){
         return this.request({action: 'getNumber', service, operator, country, forward, phoneException, ref})
             .then((response) => {
-                let [text, id, number] = response.split(':');
+                let [, id, number] = response.split(':');
                 return {
                     id,
                     number
