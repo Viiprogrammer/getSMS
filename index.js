@@ -23,7 +23,6 @@ class ServiceApiError extends Error {
         this.message = errorsList[code];
 
         if(code.indexOf('BANNED:') === 0){
-            console.log(code)
             this.serverResponse = code;
             this.code = code.split(':').reverse().pop();
             const datetime = code.split(':').pop();
@@ -141,7 +140,6 @@ class getSMS {
     getNumber(service, operator, country, forward, phoneException, ref){
         return this.request({action: 'getNumber', service, operator, country, forward, phoneException, ref})
             .then((response) => {
-                console.log(response)
                 let [text, id, number] = response.split(':');
                 return {
                     id,
@@ -177,7 +175,6 @@ class getSMS {
     getStatus(id){
         return this.request({action: 'getStatus', id})
             .then((response) => {
-                console.log(response)
                 if(['STATUS_CANCEL', 'STATUS_WAIT_RESEND', 'STATUS_WAIT_CODE'].includes(response)){
                     return {status: response};
                 } else {
