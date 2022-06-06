@@ -61,7 +61,7 @@ class getSMS {
   }
 
   async request (qs) {
-    let url = new URL(this.url)
+    const url = new URL(this.url)
     url.search = new URLSearchParams(
       Object.assign(qs, { api_key: this.key })
     ).toString()
@@ -110,7 +110,7 @@ class getSMS {
   getAdditionalService (id, service) {
     return this.request({ action: 'getAdditionalService', id, service })
       .then((response) => {
-        let [, id, number] = response.split(':')
+        const [, id, number] = response.split(':')
         return {
           id,
           number
@@ -121,10 +121,8 @@ class getSMS {
   getFullSms (id) {
     return this.request({ action: 'getFullSms', id })
       .then((response) => {
-        let [status, text] = response.split(':')
-        let res = {
-          status: status
-        }
+        const [status, text] = response.split(':')
+        const res = { status }
         if (['STATUS_WAIT_CODE', 'STATUS_CANCEL'].includes(status)) {
           return res
         } else if (status === 'FULL_SMS') {
@@ -151,7 +149,7 @@ class getSMS {
   getNumber (service, operator, country, forward, phoneException, ref) {
     return this.request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
       .then((response) => {
-        let [, id, number] = response.split(':')
+        const [, id, number] = response.split(':')
         return {
           id,
           number
@@ -168,8 +166,9 @@ class getSMS {
 
   getCode (id) {
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         this.getStatus(id).then(({ status, code }) => {
+          // eslint-disable-next-line no-empty
           if (status === 'STATUS_WAIT_CODE') {}
 
           if (status === 'STATUS_CANCEL') {
@@ -192,7 +191,7 @@ class getSMS {
         if (['STATUS_CANCEL', 'STATUS_WAIT_RESEND', 'STATUS_WAIT_CODE'].includes(response)) {
           return { status: response }
         } else {
-          let [type, code] = response.split(':')
+          const [type, code] = response.split(':')
           if (type === 'STATUS_WAIT_RETRY') {
             return { status: type, code }
           }
