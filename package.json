@@ -4,11 +4,11 @@
   "description": "SMSHub API, SMS-ACTIVATE API module",
   "main": "index.js",
   "scripts": {
-    "test": "node .",
+    "test": "node test",
     "lint": "eslint ."
   },
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "undici": "^5.4.0"
   },
   "devDependencies": {
     "eslint": "^8.17.0",

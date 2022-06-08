@@ -1,4 +1,5 @@
-const fetch = require('node-fetch')
+const { request } = require('undici')
+
 const errorsList = {
   BAD_KEY: 'Invalid api key',
   ERROR_SQL: 'Server database error',
@@ -62,27 +63,31 @@ class getSMS {
 
   async request (qs) {
     const url = new URL(this.url)
+
     url.search = new URLSearchParams(
       Object.assign(qs, { api_key: this.key })
     ).toString()
-
-    return fetch(url)
-      .then(async (response) => {
-        const data = await response.text()
-
-        if (!ServiceApiError.check(data)) {
+    return request(url, {
+      method: 'GET'
+    })
+      .then(data => data.body.text())
+      .then(data => {
+        // Safe json parsing
+        try {
+          data = JSON.parse(data)
           return data
-        } else {
-          throw new ServiceApiError(data)
+        } catch (e) {
+          if (!ServiceApiError.check(data)) {
+            return data
+          } else {
+            throw new ServiceApiError(data)
+          }
         }
       })
   }
 
   getNumbersStatus (country, operator) {
     return this.request({ action: 'getNumbersStatus', country, operator })
-      .then((response) => {
-        return JSON.parse(response)
-      })
   }
 
   getBalance () {
@@ -102,9 +107,6 @@ class getSMS {
     if (multiService instanceof Object) multiService = multiService.join(',')
     if (multiForward instanceof Object) multiForward = multiForward.join(',')
     return this.request({ action: 'getPrices', multiService, operator, country, multiForward, ref })
-      .then((response) => {
-        return JSON.parse(response)
-      })
   }
 
   getAdditionalService (id, service) {
@@ -134,16 +136,10 @@ class getSMS {
 
   getCountries () {
     return this.request({ action: 'getCountries' })
-      .then((response) => {
-        return JSON.parse(response)
-      })
   }
 
   getQiwiRequisites () {
     return this.request({ action: 'getQiwiRequisites' })
-      .then((response) => {
-        return JSON.parse(response)
-      })
   }
 
   getNumber (service, operator, country, forward, phoneException, ref) {
@@ -159,9 +155,7 @@ class getSMS {
 
   setStatus (status, id) {
     return this.request({ action: 'setStatus', status, id })
-      .then((response) => {
-        return { status: response }
-      })
+      .then(status => ({ status }))
   }
 
   getCode (id) {
@@ -205,9 +199,6 @@ class getSMS {
 
   getPrices (service, country) {
     return this.request({ action: 'getPrices', country, service })
-      .then((response) => {
-        return JSON.parse(response)
-      })
   }
 }
 
