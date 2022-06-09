@@ -1,6 +1,7 @@
 const { request } = require('undici')
 
 const errorsList = {
+  BANNED: 'Account banned',
   NO_KEY: 'Key is empty',
   BAD_KEY: 'Invalid api key',
   ERROR_SQL: 'Server database error',
@@ -43,7 +44,7 @@ class ServiceApiError extends Error {
 
     if (code.indexOf('BANNED:') === 0) {
       this.serverResponse = code
-      this.code = code.split(':').reverse().pop()
+      this.code = 'BANNED'
       const datetime = code.split(':').pop()
       let [date, time] = datetime.split(/\s/)
       time = time.split('-').join(':')
@@ -273,7 +274,7 @@ class GetSMS {
    * @typedef fullSMSTextResponse
    * @type {object}
    * @property {string} status - Status code
-   * @property {string|undefined} text - Text from SMS
+   * @property {string|undefined} text - Text from SMS. Is returning <i><b>only if status is not <code>STATUS_WAIT_CODE</code>, <code>STATUS_CANCEL</code></b></i>
    */
 
   /**
@@ -369,7 +370,7 @@ class GetSMS {
   /**
    * Unofficial / hidden method for changing default number settings (only for smshub)
    * Change max price of mobile number for coutry id, enable / disable random
-   * WARNING: I don't know why, but really values changed only  after ~30 seconds, maybe it's cached on smshub server
+   * <br><br><div style="color: yellow">WARNING: I don't know why, but really values changed only  after ~30 seconds, maybe it's cached on smshub server</div>
    * @method
    * @public
    * @async
@@ -421,7 +422,6 @@ class GetSMS {
    *
    * // No activations:
    * { status: 'fail', msg: 'no_activations' }
-   *
    */
   getCurrentActivations () {
     return this._request({ action: 'getCurrentActivations' })
@@ -443,7 +443,7 @@ class GetSMS {
    * @param {string} service - Service code name
    * @param {string} operator - Mobile operator code name
    * @param {string|number} country - Country ID
-   * @param {(string|number)} forward - Number forward, must be 1 or 0 *
+   * @param {(string|number)} forward - Number forward, must be <code>1</code> or <code>0</code> *
    * @param {string} phoneException - Prefixes for excepting mobile numbers separated by comma *
    * @param {string} ref - Referral identifier *
    * @returns {Promise<Object>}
@@ -481,7 +481,7 @@ class GetSMS {
    * @typedef getCodeResponse
    * @type {object}
    * @property {string} status - Status code
-   * @property {string|undefined} code - Code from SMS
+   * @property {string|undefined} code - Code from SMS. Is returning <i><b>only with <code>STATUS_WAIT_RETRY</code>, <code>STATUS_OK</code> statuses</b></i>
    */
 
   /**
@@ -502,7 +502,6 @@ class GetSMS {
    * const { code } = await sms.getCode(id).then(async() => {
    * console.log('Code:', code)
    * await sms.setStatus(1, id) //Accept, end
-   *
    */
   getCode (id) {
     return new Promise((resolve, reject) => {
