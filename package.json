@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node test",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "jsdoc": "jsdoc ./src/ -d ./docs --configure .jsdoc.json --verbose"
   },
   "dependencies": {
     "undici": "^5.4.0"
@@ -15,7 +16,10 @@
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.1",
-    "eslint-plugin-promise": "^6.0.0"
+    "eslint-plugin-promise": "^6.0.0",
+    "jsdoc": "^3.6.10",
+    "eslint-plugin-jsdoc": "^37.7.0",
+    "minami": "^1.2.3"
   },
   "keywords": [
     "smshub",
