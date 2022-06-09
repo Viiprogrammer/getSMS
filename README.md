@@ -10,9 +10,9 @@
 getSMS - This is [Node.js](https://nodejs.org) module that allows you to interact with the SMS services api
 
 ## Features
-  - Promises
-  - Supports `SMSActivate`, `SMSHub`
-  - Using [undici](https://github.com/nodejs/undici) http client
+-   Promises
+-   Supports `SMSActivate`, `SMSHub`
+-   Using [undici](https://github.com/nodejs/undici) http client
 
 ## Docs
 
@@ -33,28 +33,28 @@ npm i getsms
 ## Errors caught
 
 Errors that can be caught with `catch()`:
-  - `BAD_KEY` -  Invalid api key
-  - `ERROR_SQL` - Server database error
-  - `BAD_ACTION` - Bad request data
-  - `WRONG_SERVICE` - Wrong service identifier
-  - `BAD_SERVICE` - Wrong service name',
-  - `NO_ACTIVATION` - Activation not found.
-  - `NO_BALANCE` - No balance
-  - `NO_NUMBERS` - No numbers
-  - `WRONG_ACTIVATION_ID` - Wrong activation id
-  - `WRONG_EXCEPTION_PHONE` - Wrong exception phone
-  - `NO_BALANCE_FORWARD` - No balance for forward
-  - `NOT_AVAILABLE` - Multiservice is not available for selected country
-  - `BAD_FORWARD` - Incorrect forward
-  - `WRONG_ADDITIONAL_SERVICE` - Wrong additional service
-  - `WRONG_SECURITY` - WRONG_SECURITY error
-  - `REPEAT_ADDITIONAL_SERVICE` - Repeat additional service error
-  - `BANNED:YYYY-m-d H-i-s` - Account banned
+-   `BAD_KEY` -  Invalid api key
+-   `ERROR_SQL` - Server database error
+-   `BAD_ACTION` - Bad request data
+-   `WRONG_SERVICE` - Wrong service identifier
+-   `BAD_SERVICE` - Wrong service name',
+-   `NO_ACTIVATION` - Activation not found.
+-   `NO_BALANCE` - No balance
+-   `NO_NUMBERS` - No numbers
+-   `WRONG_ACTIVATION_ID` - Wrong activation id
+-   `WRONG_EXCEPTION_PHONE` - Wrong exception phone
+-   `NO_BALANCE_FORWARD` - No balance for forward
+-   `NOT_AVAILABLE` - Multiservice is not available for selected country
+-   `BAD_FORWARD` - Incorrect forward
+-   `WRONG_ADDITIONAL_SERVICE` - Wrong additional service
+-   `WRONG_SECURITY` - WRONG_SECURITY error
+-   `REPEAT_ADDITIONAL_SERVICE` - Repeat additional service error
+-   `BANNED:YYYY-m-d H-i-s` - Account banned
 
 ***if the ban code is `BANNED:YYYY-m-d H-i-s` then the error object contains the properties `banTime`, `banDate`, `banTimestamp`***
-* `banTime` - `YYYY-m-d H-i-s` (for example `2020-12-31 23-59-59`)
-* `banTimestamp` - Unixtime
-* `banDate` - JavaScript `new Date()` Object
+*   `banTime` - `YYYY-m-d H-i-s` (for example `2020-12-31 23-59-59`)
+*   `banTimestamp` - Unixtime
+*   `banDate` - JavaScript `new Date()` Object
 ## Usage example
 
 ```javascript
