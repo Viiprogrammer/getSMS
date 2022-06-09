@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node test",
     "lint": "eslint .",
-    "jsdoc": "jsdoc --configure .jsdoc.json --verbose"
+    "jsdoc": "jsdoc --configure .jsdoc.json --verbose",
+    "remark": "npx remark README.md --use remark-preset-lint-consistent --use remark-preset-lint-recommended"
   },
   "dependencies": {
     "undici": "^5.4.0"
@@ -19,7 +20,10 @@
     "eslint-plugin-promise": "^6.0.0",
     "jsdoc": "^3.6.10",
     "eslint-plugin-jsdoc": "^37.7.0",
-    "clean-jsdoc-theme": "^3.3.4"
+    "clean-jsdoc-theme": "^3.3.4",
+    "remark-cli": "^10.0.1",
+    "remark-preset-lint-consistent": "^5.1.1",
+    "remark-preset-lint-recommended": "^6.1.2"
   },
   "keywords": [
     "smshub",
