@@ -2,11 +2,11 @@
   "name": "getsms",
   "version": "1.0.2",
   "description": "SMSHub API, SMS-ACTIVATE API module",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "node test",
     "lint": "eslint .",
-    "jsdoc": "jsdoc ./src/ -d ./docs --configure .jsdoc.json --verbose"
+    "jsdoc": "jsdoc ./src/ ./README.md -d ./docs --configure .jsdoc.json --verbose"
   },
   "dependencies": {
     "undici": "^5.4.0"
