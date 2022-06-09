@@ -1,5 +1,17 @@
 {
+  "source": {
+    "include": ["src", "README.md", "package.json"]
+  },
+
   "opts": {
-    "template": "node_modules/minami"
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true,
+    "template": "./node_modules/clean-jsdoc-theme",
+    "theme_opts": {
+      "theme": "dark"
+    }
   }
 }

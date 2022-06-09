@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node test",
     "lint": "eslint .",
-    "jsdoc": "jsdoc ./src/ ./README.md -d ./docs --configure .jsdoc.json --verbose"
+    "jsdoc": "jsdoc --configure .jsdoc.json --verbose"
   },
   "dependencies": {
     "undici": "^5.4.0"
@@ -19,7 +19,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "jsdoc": "^3.6.10",
     "eslint-plugin-jsdoc": "^37.7.0",
-    "minami": "^1.2.3"
+    "clean-jsdoc-theme": "^3.3.4"
   },
   "keywords": [
     "smshub",
@@ -30,10 +30,13 @@
     "smshub-api",
     "sms",
     "gate",
-    "smsgateway"
+    "smsgateway",
+    "smsactivate",
+    "5sim",
+    "fivesim"
   ],
   "author": {
-    "name": "Maxim Telegin (viiprogrammer)",
+    "name": "Maxim Telegin",
     "email": "m_telega@mail.ru"
   },
   "bugs": {
