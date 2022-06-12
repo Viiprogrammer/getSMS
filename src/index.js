@@ -178,8 +178,8 @@ class GetSMS {
    * @public
    * @async
    * @returns {object}
-   * @param {string|number} country - Country ID
-   * @param {string} operator - Mobile operator code name
+   * @param {string|number} [country] - Country ID
+   * @param {string} [operator] - Mobile operator code name
    * @throws Error
    * @throws ServiceApiError
    */
@@ -225,8 +225,8 @@ class GetSMS {
    * @param {array|string} service - Array of services names
    * @param {array|string} operator - Array of operators names
    * @param {string|number} country - Country ID
-   * @param {(Array<(string|number)>|(number|string))} forward - Number forward, must have values 1 or 0 *
-   * @param ref - Referral identifier
+   * @param {(Array<(string|number)>|(number|string))} [forward] - Number forward, must have values 1 or 0 *
+   * @param [ref] - Referral identifier
    * @returns {Promise<Object>}
    * @throws Error
    * @throws ServiceApiError
@@ -442,11 +442,11 @@ class GetSMS {
    * @public
    * @async
    * @param {string} service - Service code name
-   * @param {string} operator - Mobile operator code name
-   * @param {string|number} country - Country ID
-   * @param {(string|number)} forward - Number forward, must be <code>1</code> or <code>0</code> *
-   * @param {string} phoneException - Prefixes for excepting mobile numbers separated by comma *
-   * @param {string} ref - Referral identifier *
+   * @param {string} [operator] - Mobile operator code name
+   * @param {string|number} [country] - Country ID
+   * @param {(string|number)} [forward] - Number forward, must be <code>1</code> or <code>0</code> *
+   * @param {string} [phoneException] - Prefixes for excepting mobile numbers separated by comma *
+   * @param {string} [ref] - Referral identifier *
    * @returns {Promise<Object>}
    * @throws Error
    * @throws ServiceApiError
@@ -558,7 +558,7 @@ class GetSMS {
    * @method
    * @public
    * @async
-   * @param {string|number} country - Country ID
+   * @param {string|number} [country] - Country ID
    * @param {string} service - Service code name
    * @returns {Promise<Object>}
    * @throws Error
