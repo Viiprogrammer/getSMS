@@ -498,8 +498,8 @@ class GetSMS {
    * console.log('Number ID:', id);
    * console.log('Number:', number);
    * await sms.setStatus(1, id);
-   * //Wait for code
-   * const { code } = await sms.getCode(id).then(async() => {
+   * // Wait for code
+   * const { code } = await sms.getCode(id)
    * console.log('Code:', code)
    * await sms.setStatus(1, id) //Accept, end
    */
