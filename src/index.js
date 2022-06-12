@@ -2,6 +2,7 @@ const { request } = require('undici')
 
 const errorsList = {
   BANNED: 'Account banned',
+  MAIL_RULE: 'For buying this service number you must satisfied additional site rules',
   NO_KEY: 'Key is empty',
   BAD_KEY: 'Invalid api key',
   ERROR_SQL: 'Server database error',
