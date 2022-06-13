@@ -33,6 +33,7 @@ npm i getsms
 ## Errors caught
 
 Errors that can be caught with `catch()`:
+-   `MAIL_RULE` - For buying this service number you must satisfied additional site rules **(smshub, undocumented)**
 -   `BAD_KEY` -  Invalid api key
 -   `ERROR_SQL` - Server database error
 -   `BAD_ACTION` - Bad request data
