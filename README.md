@@ -3,6 +3,7 @@
 <a href="https://www.npmjs.com/package/getsms"><img src="https://img.shields.io/npm/v/getsms.svg?style=flat-square" alt="NPM version"></a>
 <a href="https://www.npmjs.com/package/getsms"><img src="https://img.shields.io/npm/dt/getsms.svg?style=flat-square" alt="NPM downloads"></a>
 <a href="https://www.codacy.com/gh/Viiprogrammer/getSMS/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Viiprogrammer/getSMS&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/beb8f62dd6db47fb8f2dab52afc0e907"/></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FViiprogrammer%2FgetSMS?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FViiprogrammer%2FgetSMS.svg?type=shield"/></a>
 </p>
 
 [![NPM](https://nodei.co/npm/getsms.png?downloads=true&stars=true)](https://nodei.co/npm/getsms/)
@@ -98,3 +99,7 @@ const sms = new GetSMS({
   }
 })()
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FViiprogrammer%2FgetSMS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FViiprogrammer%2FgetSMS?ref=badge_large)
