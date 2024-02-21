@@ -511,7 +511,7 @@ class GetSMS {
    * await sms.setStatus(1, id) //Accept, end
    *
    * @param {string|number} id - Mobile number ID
-   * @param {number} [timeout=0] - Timeout, after reached - forcefully stop and throw `TimeoutError`
+   * @param {number} [timeout=0] - Timeout, after reached - forcefully stop and throw `TimeoutError`, pass 0 to disable
    * @throws {Error|ServiceApiError|TimeoutError}
    * @returns {Promise<getCodeResponse>}
    */
