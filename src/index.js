@@ -19,7 +19,8 @@ const errorsList = {
   BAD_FORWARD: 'Incorrect forward',
   WRONG_ADDITIONAL_SERVICE: 'Wrong additional service',
   WRONG_SECURITY: 'WRONG_SECURITY error',
-  REPEAT_ADDITIONAL_SERVICE: 'Repeat additional service error'
+  REPEAT_ADDITIONAL_SERVICE: 'Repeat additional service error',
+  MAX_TIMEOUT_REACHED: 'Maximum timeout has been rearched',
 }
 
 const supportedMethods = {
@@ -491,6 +492,7 @@ class GetSMS {
    * @public
    * @async
    * @param {string|number} id - Mobile number ID
+   * @param {number} maxWait - Max time to wait the code in seconds
    * @returns {Promise<getCodeResponse>}
    * @throws Error
    * @throws ServiceApiError
@@ -504,9 +506,9 @@ class GetSMS {
    * console.log('Code:', code)
    * await sms.setStatus(1, id) //Accept, end
    */
-  getCode (id) {
+  getCode (id, maxWait = null) {
     return new Promise((resolve, reject) => {
-      const interval = setInterval(() => {
+      let interval = setInterval(() => {
         this.getStatus(id).then(({ status, code }) => {
           // eslint-disable-next-line no-empty
           if (status === 'STATUS_WAIT_CODE') {}
@@ -518,10 +520,22 @@ class GetSMS {
 
           if (status === 'STATUS_OK') {
             clearInterval(interval)
+            interval = null
             resolve({ code })
           }
-        }).catch(err => reject(err))
+        }).catch(err => reject(MAX_TIMEOUT_REACHED))
       }, this._interval)
+
+      // If rearched max timeout - forcefully stoppping if still didnt get the code
+      if (maxWait) {
+        setTimeout(() => {
+          if (interval) {
+            clearInterval(interval)
+            interval = null
+            reject(new ServiceApiError('MAX_TIMEOUT_REACHED'))
+          }
+        }, 1000 * maxWait)
+      }
     })
   }
 
