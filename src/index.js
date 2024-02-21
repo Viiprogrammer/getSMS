@@ -19,8 +19,7 @@ const errorsList = {
   BAD_FORWARD: 'Incorrect forward',
   WRONG_ADDITIONAL_SERVICE: 'Wrong additional service',
   WRONG_SECURITY: 'WRONG_SECURITY error',
-  REPEAT_ADDITIONAL_SERVICE: 'Repeat additional service error',
-  MAX_TIMEOUT_REACHED: 'Maximum timeout has been rearched',
+  REPEAT_ADDITIONAL_SERVICE: 'Repeat additional service error'
 }
 
 const supportedMethods = {
@@ -34,11 +33,24 @@ const supportedMethods = {
   ]
 }
 
+class TimeoutError extends Error {
+  /**
+   * TimeoutError class constructor
+   * @constructor
+   * @param {string} message
+   */
+  constructor (message) {
+    super()
+    this.message = message
+    this.name = this.constructor.name
+  }
+}
+
 class ServiceApiError extends Error {
   /**
    * ServiceApiError class constructor
    * @constructor
-   * @param code Sms service error string
+   * @param {string} code Sms service error string
    */
   constructor (code) {
     super()
@@ -48,9 +60,11 @@ class ServiceApiError extends Error {
       this.serverResponse = code
       this.code = 'BANNED'
       const datetime = code.split(':').pop()
+
       let [date, time] = datetime.split(/\s/)
       time = time.split('-').join(':')
       date = date.split('-').join('/')
+
       const obj = new Date(`${date} ${time}`)
 
       this.banTime = datetime
@@ -59,6 +73,7 @@ class ServiceApiError extends Error {
     } else {
       this.code = code
     }
+
     this.name = this.constructor.name
   }
 
@@ -67,8 +82,9 @@ class ServiceApiError extends Error {
    * @method
    * @static
    * @private
-   * @return boolean
-   * @param response Http request response string
+   *
+   * @param {string} response Http request response string
+   * @return {boolean}
    */
   static _check (response) {
     return Object.keys(errorsList).includes(response) && (response.indexOf('BANNED:') !== 0)
@@ -77,35 +93,32 @@ class ServiceApiError extends Error {
 
 class GetSMS {
   /**
-   * Enum for tri-state values.
-   * @enum {number}
-   */
-
-  /**
-   * @typedef InitProperties
-   * @type {object}
-   * @property {string} key - Service API key
-   * @property {string} url - Service endpoint url
-   * @property {string} [secondUrl=https://smshub.org/api.php] - Used for method <code>getListOfCountriesAndOperators</code> (only SMSHUB)
-   * @property {(en|ru)} [lang=ru] - Lang code, smshub can returns results with russian  or english (Only smshub)
-   * @property {(smshub|smsactivate)} service - Service name
-   * @property {interval} [interval=2000] - Polling interval of getCode method
+   * @typedef {object} InitProperties
+   * @property {string} key Service API key
+   * @property {string} url Service endpoint url
+   * @property {string} [secondUrl=https://smshub.org/api.php] Used for method `getListOfCountriesAndOperators` (only SMSHUB)
+   * @property {'en'|'ru'} [lang=ru] Lang code, smshub can return results with russian  or english (Only smshub)
+   * @property {'smshub'|'smsactivate'} service Service name
+   * @property {number} [interval=2000] Polling interval of getCode method
    */
 
   /**
    * GetSMS class constructor
    * @constructor
-   * @returns GetSMS
-   * @param {InitProperties} - Options object
-   * @throws Error
+   *
+   * @param {InitProperties} options Options object
+   * @throws {Error}
+   * @returns {GetSMS}
    */
   constructor ({ key, url, secondUrl = 'https://smshub.org/api.php', service, lang = 'ru', interval = 2000 }) {
     if (!key || !url || !service) {
       throw new Error('Missing argument(s)')
     }
+
     if (!['smshub', 'smsactivate'].includes(service)) {
       throw new Error('Invalid service name')
     }
+
     this._key = key
     this._url = url
     this._lang = lang
@@ -134,14 +147,13 @@ class GetSMS {
    * Method for sending API requests
    * @method
    * @private
-   * @async
+   *
+   * @param {object} qs Query string params
+   * @param {string} method Request METHOD
+   * @param {object} [form] Form object
+   * @param {boolean} [second=false] Use second API endpoint
+   * @throws {Error|ServiceApiError}
    * @returns {Promise<object|string>}
-   * @param {object} qs - Query string params
-   * @param {string} method - Request METHOD
-   * @param {object|undefined} form - Form object
-   * @param {boolean} [second=false] - Use second API endpoint
-   * @throws Error
-   * @throws ServiceApiError
    */
   async _request (qs, { method = 'GET', form, second = false } = {}) {
     const url = new URL(second ? this._secondUrl : this._url)
@@ -177,66 +189,64 @@ class GetSMS {
    * Method for getting number status
    * @method
    * @public
-   * @async
+   *
+   * @param {string|number} [country] Country ID
+   * @param {string} [operator] Mobile operator code name
+   * @throws {Error|ServiceApiError}
    * @returns {object}
-   * @param {string|number} [country] - Country ID
-   * @param {string} [operator] - Mobile operator code name
-   * @throws Error
-   * @throws ServiceApiError
    */
-  getNumbersStatus (country, operator) {
+  async getNumbersStatus (country, operator) {
     return this._request({ action: 'getNumbersStatus', country, operator })
   }
 
   /**
-   * @typedef BalanceObject
-   * @type {object}
-   * @property {string} balance_string - Balance as string
-   * @property {number} balance_float - Balance as float number
-   * @property {number} balance_number - Balance as multiplied by 100 as integer number
+   * @typedef {object} BalanceObject
+   * @property {string} balance_string Balance as string
+   * @property {number} balance_float Balance as float number
+   * @property {number} balance_number Balance as multiplied by 100 as integer number
    */
 
   /**
    * Method for getting account balance
    * @method
    * @public
-   * @async
+   *
+   * @throws {Error|ServiceApiError}
    * @returns {Promise<BalanceObject>}
-   * @throws Error
-   * @throws ServiceApiError
    */
-  getBalance () {
-    return this._request({ action: 'getBalance' })
-      .then((response) => {
-        const [, balance] = response.split(':')
-        const balanceParsed = parseFloat(balance)
-        return {
-          balance_string: balance,
-          balance_float: balanceParsed,
-          balance_number: balanceParsed * 100
-        }
-      })
+  async getBalance () {
+    const response = await this._request({ action: 'getBalance' })
+
+    const [, balance] = response.split(':')
+    const balanceParsed = parseFloat(balance)
+
+    return {
+      balance_string: balance,
+      balance_float: balanceParsed,
+      balance_number: balanceParsed * 100
+    }
   }
 
   /**
    * Method for getting number for using with several services (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @param {array|string} service - Array of services names
-   * @param {array|string} operator - Array of operators names
-   * @param {string|number} country - Country ID
-   * @param {(Array<(string|number)>|(number|string))} [forward] - Number forward, must have values 1 or 0 *
-   * @param [ref] - Referral identifier
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
    * @example
    * .getMultiServiceNumber('ok,vk,vi,av', 'mts', 0, '0,1,0,0')
+   *
    * @example
    * .getMultiServiceNumber(['ok','vk','vi','av'], 'mts', 0, [0, 1, 0, 0])
+   *
+   * @param {array|string} service Array of services names
+   * @param {array|string} operator Array of operators names
+   * @param {string|number} country Country ID
+   * @param {Array<string|number>|string} [forward] Number forward, must have values 1 or 0 *
+   * @param {string} [ref] Referral identifier
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getMultiServiceNumber (service, operator, country, forward, ref) {
+  async getMultiServiceNumber (service, operator, country, forward, ref) {
     if (Array.isArray(service)) service = service.toString()
     if (Array.isArray(forward)) forward = forward.toString()
     if (Array.isArray(operator)) operator = operator.toString()
@@ -244,75 +254,72 @@ class GetSMS {
   }
 
   /**
-   * @typedef additionalServiceResponse
-   * @type {object}
-   * @property {string} id - Status code
-   * @property {string} number - Text from SMS
+   * @typedef {object} additionalServiceResponse
+   * @property {string} id Status code
+   * @property {string} number Text from SMS
    */
 
   /**
    * Method for getting additional service for numbers with forward (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @param {string} id - Mobile number ID
-   * @param {string} service - Service code name
+   *
+   * @param {string} id Mobile number ID
+   * @param {string} service Service code name
    * @returns {Promise<additionalServiceResponse>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @throws {Error|ServiceApiError}
    */
-  getAdditionalService (id, service) {
-    return this._request({ action: 'getAdditionalService', id, service })
-      .then((response) => {
-        const [, id, number] = response.split(':')
-        return {
-          id,
-          number
-        }
-      })
+  async getAdditionalService (id, service) {
+    const response = await this._request({ action: 'getAdditionalService', id, service })
+
+    const [, _id, number] = response.split(':')
+
+    return {
+      id: _id,
+      number
+    }
   }
 
   /**
-   * @typedef fullSMSTextResponse
-   * @type {object}
-   * @property {string} status - Status code
-   * @property {string|undefined} text - Text from SMS. Is returning <i><b>only if status is not <code>STATUS_WAIT_CODE</code>, <code>STATUS_CANCEL</code></b></i>
+   * @typedef {object} fullSMSTextResponse
+   * @property {string} status Status code
+   * @property {string} [text] Text from SMS. Is returning _**only if status is not `STATUS_WAIT_CODE`, `STATUS_CANCEL`**_
    */
 
   /**
    * Method for getting full sms text (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @param {string|number} id - Mobile number ID
+   *
+   * @param {string|number} id Mobile number ID
    * @returns {Promise<fullSMSTextResponse>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @throws {Error|ServiceApiError}
    */
-  getFullSms (id) {
-    return this._request({ action: 'getFullSms', id })
-      .then((response) => {
-        const [status, text] = response.split(':')
-        const res = { status }
-        if (['STATUS_WAIT_CODE', 'STATUS_CANCEL'].includes(status)) {
-          return res
-        } else if (status === 'FULL_SMS') {
-          res.text = text
-          return res
-        }
-      })
+  async getFullSms (id) {
+    const response = await this._request({ action: 'getFullSms', id })
+
+    const [status, text] = response.split(':')
+    const res = { status }
+
+    if (['STATUS_WAIT_CODE', 'STATUS_CANCEL'].includes(status)) {
+      return res
+    }
+
+    if (status === 'FULL_SMS') {
+      res.text = text
+      return res
+    }
   }
 
   /**
    * Method for getting countries list (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getCountries () {
+  async getCountries () {
     return this._request({ action: 'getCountries' })
   }
 
@@ -320,24 +327,21 @@ class GetSMS {
    * Method for getting Qiwi payment requisites (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getQiwiRequisites () {
+  async getQiwiRequisites () {
     return this._request({ action: 'getQiwiRequisites' })
   }
 
   /**
    * Unofficial / hidden method for getting list of countries & operators (only for smshub)
+   *
    * @method
    * @public
-   * @async
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
-   * @example <caption>Answer example:</caption>
+   *
+   * @example Answer example:
    * {
    *     status: "success",
    *     services: [{
@@ -357,8 +361,11 @@ class GetSMS {
    *     currentCountry: "0",
    *     currentOperator: "any"
    * }
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getListOfCountriesAndOperators () {
+  async getListOfCountriesAndOperators () {
     return this._request({
       cat: 'scripts',
       act: 'manageActivations',
@@ -371,32 +378,30 @@ class GetSMS {
 
   /**
    * Unofficial / hidden method for changing default number settings (only for smshub)
-   * Change max price of mobile number for coutry id, enable / disable random
+   * Change max price of mobile number for country id, enable / disable random
    * <br><br><div style="color: yellow">WARNING: I don't know why, but really values changed only  after ~30 seconds, maybe it's cached on smshub server</div>
+   *
    * @method
    * @public
-   * @async
-   * @param {string} service - Service code name
-   * @param {string|number} maxPrice - Max buy price
-   * @param {boolean} random - Enable random number
-   * @param {string|number} country - Country ID
+   *
+   * @param {string} service Service code name
+   * @param {string|number} maxPrice Max buy price
+   * @param {boolean} random Enable random number
+   * @param {string|number} country Country ID
+   * @throws {Error|ServiceApiError}
    * @returns {Promise}
-   * @throws Error
-   * @throws ServiceApiError
    */
-  setMaxPrice (service, maxPrice, random = true, country) {
+  async setMaxPrice (service, maxPrice, random = true, country) {
     return this._request({ action: 'setMaxPrice', service, maxPrice, country, random })
   }
 
   /**
    * Unofficial / hidden method for getting list of current activations (only for smshub)
+   *
    * @method
    * @public
-   * @async
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
-   * @example <caption>Answer example:</caption>
+   *
+   * @example Answer example:
    * // Success request:
    *
    * {
@@ -424,78 +429,77 @@ class GetSMS {
    *
    * // No activations:
    * { status: 'fail', msg: 'no_activations' }
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getCurrentActivations () {
+  async getCurrentActivations () {
     return this._request({ action: 'getCurrentActivations' })
   }
 
   /**
-   * @typedef getCodeResponse
-   * @type {object}
-   * @property {string} status - Status code
-   * @property {string|undefined} code - Code from SMS
+   * @typedef {object} getCodeResponse
+   * @property {string} status Status code
+   * @property {string|undefined} code Code from SMS
    */
 
   /**
    * Method for getting new number
    * Arguments with * available only for smsactivate
+   *
    * @method
    * @public
-   * @async
-   * @param {string} service - Service code name
-   * @param {string} [operator] - Mobile operator code name
-   * @param {string|number} [country] - Country ID
-   * @param {(string|number)} [forward] - Number forward, must be <code>1</code> or <code>0</code> *
-   * @param {string} [phoneException] - Prefixes for excepting mobile numbers separated by comma *
-   * @param {string} [ref] - Referral identifier *
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @param {string} service Service code name
+   * @param {string} [operator] Mobile operator code name
+   * @param {string|number} [country] Country ID
+   * @param {string|number} [forward] Number forward, must be `1` or `0` *
+   * @param {string} [phoneException] Prefixes for excepting mobile numbers separated by comma *
+   * @param {string} [ref] Referral identifier *
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getNumber (service, operator, country, forward, phoneException, ref) {
-    return this._request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
-      .then((response) => {
-        const [, id, number] = response.split(':')
-        return {
-          id,
-          number
-        }
-      })
+  async getNumber (service, operator, country, forward, phoneException, ref) {
+    const response = await this._request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
+
+    const [, id, number] = response.split(':')
+
+    return {
+      id,
+      number
+    }
   }
 
   /**
    * Method for set number status
    * @method
    * @public
-   * @async
-   * @param {string|number} status - New mobile number status
-   * @param {string|number} id - Mobile number ID
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @param {string|number} status New mobile number status
+   * @param {string|number} id Mobile number ID
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  setStatus (status, id) {
-    return this._request({ action: 'setStatus', status, id })
-      .then(status => ({ status }))
+  async setStatus (status, id) {
+    const response = await this._request({ action: 'setStatus', status, id })
+
+    return { status: response }
   }
 
   /**
-   * @typedef getCodeResponse
-   * @type {object}
-   * @property {string} status - Status code
-   * @property {string|undefined} code - Code from SMS. Is returning <i><b>only with <code>STATUS_WAIT_RETRY</code>, <code>STATUS_OK</code> statuses</b></i>
+   * @typedef {object} getCodeResponse
+   * @property {string} status Status code
+   * @property {string|undefined} code Code from SMS. Is returning _**only with `STATUS_WAIT_RETRY`, `STATUS_OK` statuses**_
    */
 
   /**
    * Method which polling with getStatus method and returns new status when it's changes
+   *
    * @method
    * @public
-   * @async
-   * @param {string|number} id - Mobile number ID
-   * @param {number} maxWait - Max time to wait the code in seconds
-   * @returns {Promise<getCodeResponse>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
    * @example
    * const { id, number } = await sms.getNumber('vk', 'mts', 0)
    * console.log('Number ID:', id);
@@ -505,36 +509,51 @@ class GetSMS {
    * const { code } = await sms.getCode(id)
    * console.log('Code:', code)
    * await sms.setStatus(1, id) //Accept, end
+   *
+   * @param {string|number} id - Mobile number ID
+   * @param {number} [timeout=0] - Timeout, after reached - forcefully stop and throw `TimeoutError`
+   * @throws {Error|ServiceApiError|TimeoutError}
+   * @returns {Promise<getCodeResponse>}
    */
-  getCode (id, maxWait = null) {
+  async getCode (id, timeout = 0) {
     return new Promise((resolve, reject) => {
-      let interval = setInterval(() => {
-        this.getStatus(id).then(({ status, code }) => {
+      let timeoutId = null
+
+      const interval = setInterval(async () => {
+        try {
+          const {
+            status,
+            code
+          } = await this.getStatus(id)
+
           // eslint-disable-next-line no-empty
           if (status === 'STATUS_WAIT_CODE') {}
 
           if (status === 'STATUS_CANCEL') {
             clearInterval(interval)
+            if (timeoutId) clearTimeout(timeoutId)
             resolve({ status })
           }
 
           if (status === 'STATUS_OK') {
             clearInterval(interval)
-            interval = null
+            if (timeoutId) clearTimeout(timeoutId)
             resolve({ code })
           }
-        }).catch(err => reject(MAX_TIMEOUT_REACHED))
+        } catch (err) {
+          clearInterval(interval)
+          if (timeoutId) clearTimeout(timeoutId)
+          reject(err)
+        }
       }, this._interval)
 
-      // If rearched max timeout - forcefully stoppping if still didnt get the code
-      if (maxWait) {
-        setTimeout(() => {
-          if (interval) {
-            clearInterval(interval)
-            interval = null
-            reject(new ServiceApiError('MAX_TIMEOUT_REACHED'))
-          }
-        }, 1000 * maxWait)
+      if (timeout) {
+        timeoutId = setTimeout(() => {
+          clearInterval(interval)
+          clearTimeout(timeoutId)
+
+          reject(new TimeoutError(`Timeout ${timeout}ms reached`))
+        }, timeout)
       }
     })
   }
@@ -543,42 +562,40 @@ class GetSMS {
    * Method for getting number status
    * @method
    * @public
-   * @async
-   * @param {string|number} id - Mobile number ID
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @param {string|number} id Mobile number ID
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getStatus (id) {
-    return this._request({ action: 'getStatus', id })
-      .then((response) => {
-        if (['STATUS_CANCEL', 'STATUS_WAIT_RESEND', 'STATUS_WAIT_CODE'].includes(response)) {
-          return { status: response }
-        } else {
-          const [type, code] = response.split(':')
-          if (type === 'STATUS_WAIT_RETRY') {
-            return { status: type, code }
-          }
-          if (type === 'STATUS_OK') {
-            return { status: type, code }
-          }
-          return { status: 'UNKNOWN' }
-        }
-      })
+  async getStatus (id) {
+    const response = await this._request({ action: 'getStatus', id })
+
+    if (['STATUS_CANCEL', 'STATUS_WAIT_RESEND', 'STATUS_WAIT_CODE'].includes(response)) {
+      return { status: response }
+    }
+
+    const [type, code] = response.split(':')
+
+    if (type === 'STATUS_WAIT_RETRY') {
+      return { status: type, code }
+    }
+
+    if (type === 'STATUS_OK') {
+      return { status: type, code }
+    }
+
+    return { status: 'UNKNOWN' }
   }
 
   /**
    * Method for getting numbers prices
    * @method
    * @public
-   * @async
-   * @param {string|number} [country] - Country ID
-   * @param {string} service - Service code name
-   * @returns {Promise<Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @param {string|number} [country] Country ID
+   * @param {string} service Service code name
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise<object>}
    */
-  getPrices (service, country) {
+  async getPrices (service, country) {
     return this._request({ action: 'getPrices', country, service })
   }
 }
@@ -586,6 +603,7 @@ class GetSMS {
 module.exports = {
   GetSMS,
   ServiceApiError,
+  TimeoutError,
   errors: Object.fromEntries(
     Object.keys(errorsList)
       .map(e => [e, e])
