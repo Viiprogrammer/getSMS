@@ -1,4 +1,5 @@
 const { request } = require('undici')
+const countries = require('./countries.json');
 
 const errorsList = {
   BANNED: 'Account banned',
@@ -89,6 +90,7 @@ class GetSMS {
    * @property {(en|ru)} [lang=ru] - Lang code, smshub can returns results with russian  or english (Only smshub)
    * @property {(smshub|smsactivate)} service - Service name
    * @property {interval} [interval=2000] - Polling interval of getCode method
+   * @property {boolean} [withoutCountryCode=false] - Return numbers without country code
    */
 
   /**
@@ -98,7 +100,7 @@ class GetSMS {
    * @param {InitProperties} - Options object
    * @throws Error
    */
-  constructor ({ key, url, secondUrl = 'https://smshub.org/api.php', service, lang = 'ru', interval = 2000 }) {
+  constructor ({ key, url, secondUrl = 'https://smshub.org/api.php', service, lang = 'ru', interval = 2000, withoutCountryCode = false }) {
     if (!key || !url || !service) {
       throw new Error('Missing argument(s)')
     }
@@ -111,6 +113,7 @@ class GetSMS {
     this._secondUrl = secondUrl
     this._service = service
     this._interval = interval
+    this._withoutCountryCode = withoutCountryCode
 
     return new Proxy(this, {
       get (target, prop) {
@@ -454,7 +457,17 @@ class GetSMS {
   getNumber (service, operator, country, forward, phoneException, ref) {
     return this._request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
       .then((response) => {
-        const [, id, number] = response.split(':')
+        let [, id, number] = response.split(':')
+
+        // Removing country code if needed
+        if (this._withoutCountryCode) {
+          const countryObj = countries.find((el) => {
+            return el.smsHubId === country
+          })
+          // removing country number, but only if it is in the beginning of the string
+          number = number.replace(new RegExp('^' + countryObj.phoneCode), '')
+        }
+
         return {
           id,
           number

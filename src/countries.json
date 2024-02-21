@@ -1,0 +1,560 @@
+[
+  {
+    "code": "RU",
+    "country": "Russia",
+    "phoneCode": 7,
+    "smsHubId": 0
+  },
+  {
+    "code": "UA",
+    "country": "Ukraine",
+    "phoneCode": 380,
+    "smsHubId": 1
+  },
+  {
+    "code": "KZ",
+    "country": "Kazakhstan",
+    "phoneCode": 7,
+    "smsHubId": 2
+  },
+  {
+    "code": "CN",
+    "country": "China",
+    "phoneCode": 86,
+    "smsHubId": 3
+  },
+  {
+    "code": "PH",
+    "country": "Philippines",
+    "phoneCode": 63,
+    "smsHubId": 4
+  },
+  {
+    "code": "MM",
+    "country": "Myanmar",
+    "phoneCode": 95,
+    "smsHubId": 5
+  },
+  {
+    "code": "ID",
+    "country": "Indonesia",
+    "phoneCode": 62,
+    "smsHubId": 6
+  },
+  {
+    "code": "MY",
+    "country": "Malaysia",
+    "phoneCode": 60,
+    "smsHubId": 7
+  },
+  {
+    "code": "KE",
+    "country": "Kenya",
+    "phoneCode": 254,
+    "smsHubId": 8
+  },
+  {
+    "code": "TZ",
+    "country": "Tanzania",
+    "phoneCode": 255,
+    "smsHubId": 9
+  },
+  {
+    "code": "VN",
+    "country": "Vietnam",
+    "phoneCode": 84,
+    "smsHubId": 10
+  },
+  {
+    "code": "KG",
+    "country": "Kyrgyzstan",
+    "phoneCode": 996,
+    "smsHubId": 11
+  },
+  {
+    "code": "US",
+    "country": "USA (Virtual)",
+    "phoneCode": 1,
+    "smsHubId": 12
+  },
+  {
+    "code": "IL",
+    "country": "Israel",
+    "phoneCode": 972,
+    "smsHubId": 13
+  },
+  {
+    "code": "HK",
+    "country": "Hong Kong",
+    "phoneCode": 852,
+    "smsHubId": 14
+  },
+  {
+    "code": "PL",
+    "country": "Poland",
+    "phoneCode": 48,
+    "smsHubId": 15
+  },
+  {
+    "code": "GB",
+    "country": "United Kingdom",
+    "phoneCode": 44,
+    "smsHubId": 16
+  },
+  {
+    "code": "MG",
+    "country": "Madagascar",
+    "phoneCode": 261,
+    "smsHubId": 17
+  },
+  {
+    "code": "CD",
+    "country": "Democratic Republic of the Congo",
+    "phoneCode": 243,
+    "smsHubId": 18
+  },
+  {
+    "code": "NG",
+    "country": "Nigeria",
+    "phoneCode": 234,
+    "smsHubId": 19
+  },
+  {
+    "code": "MO",
+    "country": "Macao",
+    "phoneCode": 853,
+    "smsHubId": 20
+  },
+  {
+    "code": "EG",
+    "country": "Egypt",
+    "phoneCode": 20,
+    "smsHubId": 21
+  },
+  {
+    "code": "IN",
+    "country": "India",
+    "phoneCode": 91,
+    "smsHubId": 22
+  },
+  {
+    "code": "IE",
+    "country": "Ireland",
+    "phoneCode": 353,
+    "smsHubId": 23
+  },
+  {
+    "code": "KH",
+    "country": "Cambodia",
+    "phoneCode": 855,
+    "smsHubId": 24
+  },
+  {
+    "code": "LA",
+    "country": "Laos",
+    "phoneCode": 856,
+    "smsHubId": 25
+  },
+  {
+    "code": "HT",
+    "country": "Haiti",
+    "phoneCode": 509,
+    "smsHubId": 26
+  },
+  {
+    "code": "CI",
+    "country": "Côte d'Ivoire",
+    "phoneCode": 225,
+    "smsHubId": 27
+  },
+  {
+    "code": "GM",
+    "country": "Gambia",
+    "phoneCode": 220,
+    "smsHubId": 28
+  },
+  {
+    "code": "RS",
+    "country": "Serbia",
+    "phoneCode": 381,
+    "smsHubId": 29
+  },
+  {
+    "code": "YE",
+    "country": "Yemen",
+    "phoneCode": 967,
+    "smsHubId": 30
+  },
+  {
+    "code": "ZA",
+    "country": "South Africa",
+    "phoneCode": 27,
+    "smsHubId": 31
+  },
+  {
+    "code": "RO",
+    "country": "Romania",
+    "phoneCode": 40,
+    "smsHubId": 32
+  },
+  {
+    "code": "CO",
+    "country": "Colombia",
+    "phoneCode": 57,
+    "smsHubId": 33
+  },
+  {
+    "code": "EE",
+    "country": "Estonia",
+    "phoneCode": 372,
+    "smsHubId": 34
+  },
+  {
+    "code": "AZ",
+    "country": "Azerbaijan",
+    "phoneCode": 994,
+    "smsHubId": 35
+  },
+  {
+    "code": "CA",
+    "country": "Canada",
+    "phoneCode": 1,
+    "smsHubId": 36
+  },
+  {
+    "code": "MA",
+    "country": "Morocco",
+    "phoneCode": 212,
+    "smsHubId": 37
+  },
+  {
+    "code": "GH",
+    "country": "Ghana",
+    "phoneCode": 233,
+    "smsHubId": 38
+  },
+  {
+    "code": "AR",
+    "country": "Argentina",
+    "phoneCode": 54,
+    "smsHubId": 39
+  },
+  {
+    "code": "UZ",
+    "country": "Uzbekistan",
+    "phoneCode": 998,
+    "smsHubId": 40
+  },
+  {
+    "code": "CM",
+    "country": "Cameroon",
+    "phoneCode": 237,
+    "smsHubId": 41
+  },
+  {
+    "code": "TD",
+    "country": "Chad",
+    "phoneCode": 235,
+    "smsHubId": 42
+  },
+  {
+    "code": "DE",
+    "country": "Germany",
+    "phoneCode": 49,
+    "smsHubId": 43
+  },
+  {
+    "code": "LT",
+    "country": "Lithuania",
+    "phoneCode": 370,
+    "smsHubId": 44
+  },
+  {
+    "code": "HR",
+    "country": "Croatia",
+    "phoneCode": 385,
+    "smsHubId": 45
+  },
+  {
+    "code": "SE",
+    "country": "Sweden",
+    "phoneCode": 46,
+    "smsHubId": 46
+  },
+  {
+    "code": "IQ",
+    "country": "Iraq",
+    "phoneCode": 964,
+    "smsHubId": 47
+  },
+  {
+    "code": "NL",
+    "country": "Netherlands",
+    "phoneCode": 31,
+    "smsHubId": 48
+  },
+  {
+    "code": "LV",
+    "country": "Latvia",
+    "phoneCode": 371,
+    "smsHubId": 49
+  },
+  {
+    "code": "AT",
+    "country": "Austria",
+    "phoneCode": 43,
+    "smsHubId": 50
+  },
+  {
+    "code": "BY",
+    "country": "Belarus",
+    "phoneCode": 375,
+    "smsHubId": 51
+  },
+  {
+    "code": "TH",
+    "country": "Thailand",
+    "phoneCode": 66,
+    "smsHubId": 52
+  },
+  {
+    "code": "SA",
+    "country": "Saudi Arabia",
+    "phoneCode": 966,
+    "smsHubId": 53
+  },
+  {
+    "code": "MX",
+    "country": "Mexico",
+    "phoneCode": 52,
+    "smsHubId": 54
+  },
+  {
+    "code": "TW",
+    "country": "Taiwan",
+    "phoneCode": 886,
+    "smsHubId": 55
+  },
+  {
+    "code": "ES",
+    "country": "Spain",
+    "phoneCode": 34,
+    "smsHubId": 56
+  },
+  {
+    "code": "IR",
+    "country": "Iran",
+    "phoneCode": 98,
+    "smsHubId": 57
+  },
+  {
+    "code": "DZ",
+    "country": "Algeria",
+    "phoneCode": 213,
+    "smsHubId": 58
+  },
+  {
+    "code": "SI",
+    "country": "Slovenia",
+    "phoneCode": 386,
+    "smsHubId": 59
+  },
+  {
+    "code": "BD",
+    "country": "Bangladesh",
+    "phoneCode": 880,
+    "smsHubId": 60
+  },
+  {
+    "code": "SN",
+    "country": "Senegal",
+    "phoneCode": 221,
+    "smsHubId": 61
+  },
+  {
+    "code": "TR",
+    "country": "Turkey",
+    "phoneCode": 90,
+    "smsHubId": 62
+  },
+  {
+    "code": "CZ",
+    "country": "Czech Republic",
+    "phoneCode": 420,
+    "smsHubId": 63
+  },
+  {
+    "code": "LK",
+    "country": "Sri Lanka",
+    "phoneCode": 94,
+    "smsHubId": 64
+  },
+  {
+    "code": "PE",
+    "country": "Peru",
+    "phoneCode": 51,
+    "smsHubId": 65
+  },
+  {
+    "code": "PK",
+    "country": "Pakistan",
+    "phoneCode": 92,
+    "smsHubId": 66
+  },
+  {
+    "code": "NZ",
+    "country": "New Zealand",
+    "phoneCode": 64,
+    "smsHubId": 67
+  },
+  {
+    "code": "GN",
+    "country": "Guinea",
+    "phoneCode": 224,
+    "smsHubId": 68
+  },
+  {
+    "code": "ML",
+    "country": "Mali",
+    "phoneCode": 223,
+    "smsHubId": 69
+  },
+  {
+    "code": "VE",
+    "country": "Venezuela",
+    "phoneCode": 58,
+    "smsHubId": 70
+  },
+  {
+    "code": "ET",
+    "country": "Ethiopia",
+    "phoneCode": 251,
+    "smsHubId": 71
+  },
+  {
+    "code": "MN",
+    "country": "Mongolia",
+    "phoneCode": 976,
+    "smsHubId": 72
+  },
+  {
+    "code": "BR",
+    "country": "Brazil",
+    "phoneCode": 55,
+    "smsHubId": 73
+  },
+  {
+    "code": "AF",
+    "country": "Afghanistan",
+    "phoneCode": 93,
+    "smsHubId": 74
+  },
+  {
+    "code": "UG",
+    "country": "Uganda",
+    "phoneCode": 256,
+    "smsHubId": 75
+  },
+  {
+    "code": "AO",
+    "country": "Angola",
+    "phoneCode": 244,
+    "smsHubId": 76
+  },
+  {
+    "code": "CY",
+    "country": "Cyprus",
+    "phoneCode": 357,
+    "smsHubId": 77
+  },
+  {
+    "code": "FR",
+    "country": "France",
+    "phoneCode": 33,
+    "smsHubId": 78
+  },
+  {
+    "code": "PG",
+    "country": "Papua New Guinea",
+    "phoneCode": 675,
+    "smsHubId": 79
+  },
+  {
+    "code": "MZ",
+    "country": "Mozambique",
+    "phoneCode": 258,
+    "smsHubId": 80
+  },
+  {
+    "code": "NP",
+    "country": "Nepal",
+    "phoneCode": 977,
+    "smsHubId": 81
+  },
+  {
+    "code": "BE",
+    "country": "Belgium",
+    "phoneCode": 32,
+    "smsHubId": 82
+  },
+  {
+    "code": "BG",
+    "country": "Bulgaria",
+    "phoneCode": 359,
+    "smsHubId": 83
+  },
+  {
+    "code": "HU",
+    "country": "Hungary",
+    "phoneCode": 36,
+    "smsHubId": 84
+  },
+  {
+    "code": "DK",
+    "country": "Denmark",
+    "phoneCode": 45,
+    "smsHubId": 85
+  },
+  {
+    "code": "FI",
+    "country": "Finland",
+    "phoneCode": 358,
+    "smsHubId": 86
+  },
+  {
+    "code": "NO",
+    "country": "Norway",
+    "phoneCode": 47,
+    "smsHubId": 87
+  },
+  {
+    "code": "IS",
+    "country": "Iceland",
+    "phoneCode": 354,
+    "smsHubId": 88
+  },
+  {
+    "code": "ZW",
+    "country": "Zimbabwe",
+    "phoneCode": 263,
+    "smsHubId": 89
+  },
+  {
+    "code": "PY",
+    "country": "Paraguay",
+    "phoneCode": 595,
+    "smsHubId": 90
+  },
+  {
+    "code": "SY",
+    "country": "Syria",
+    "phoneCode": 963,
+    "smsHubId": 91
+  },
+  {
+    "code": "UG",
+    "country": "Uganda",
+    "phoneCode": 256,
+    "smsHubId": 92
+  }
+]
