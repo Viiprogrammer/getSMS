@@ -1,4 +1,4 @@
-const { GetSMS, ServiceApiError, errors } = require('getsms')
+const { GetSMS, ServiceApiError, TimeoutError, errors } = require('getsms')
 
 const sms = new GetSMS({
   key: 'bc103fa02b63f986cd102a6d2f5c',
@@ -27,6 +27,10 @@ const sms = new GetSMS({
       await sms.setStatus(6, id) // Accept, end
     } else console.log('No money')
   } catch (error) {
+    if (error instanceof TimeoutError) {
+      console.log('Timeout reached')
+    }
+
     if (error instanceof ServiceApiError) {
       if (error.code === errors.BANNED) {
         console.log(`Banned! Time ${error.banTime}`)
