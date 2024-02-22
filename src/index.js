@@ -239,6 +239,7 @@ class GetSMS {
    * .getMultiServiceNumber(['ok','vk','vi','av'], 'mts', 0, [0, 1, 0, 0])
    */
   getMultiServiceNumber (service, operator, country, forward, ref) {
+    country = getCountryId(country)
     if (Array.isArray(service)) service = service.toString()
     if (Array.isArray(forward)) forward = forward.toString()
     if (Array.isArray(operator)) operator = operator.toString()
@@ -387,6 +388,7 @@ class GetSMS {
    * @throws ServiceApiError
    */
   setMaxPrice (service, maxPrice, random = true, country) {
+    country = getCountryId(country)
     return this._request({ action: 'setMaxPrice', service, maxPrice, country, random })
   }
 
@@ -455,16 +457,7 @@ class GetSMS {
    * @throws ServiceApiError
    */
   getNumber (service, operator, country, forward, phoneException, ref) {
-    // if country represented by 2 letters, converting it to country ID before making a request
-    if (!/^-?\d+$/.test(country) && 2 === country.length) {
-      console.log('String to number')
-      const res = countries.find((el) => el.code === country)
-      if (res) {
-        country = res.smsHubId
-      } else {
-        throw new Error('Country ID is not found by 2 letter symbol code')
-      }
-    }
+    country = getCountryId(country)
     
     return this._request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
       .then((response) => {
@@ -589,7 +582,27 @@ class GetSMS {
    * @throws ServiceApiError
    */
   getPrices (service, country) {
+    country = getCountryId(country)
     return this._request({ action: 'getPrices', country, service })
+  }
+}
+
+/**
+ * Method for getting ID of the country by 2 letter code
+ * @method
+ * @private
+ * @param {string|number} [country] - Country ID or 2 letter symbol code
+ * @returns number
+ * @throws Error
+ */
+function getCountryId(country) {
+  if (!/^-?\d+$/.test(country) && 2 === country.length) {
+    const res = countries.find((el) => el.code === country)
+    if (res) {
+      return res.smsHubId
+    } else {
+      throw new Error('Country ID is not found by 2 letter symbol code')
+    }
   }
 }
 
