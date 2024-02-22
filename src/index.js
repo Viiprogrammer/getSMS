@@ -455,6 +455,17 @@ class GetSMS {
    * @throws ServiceApiError
    */
   getNumber (service, operator, country, forward, phoneException, ref) {
+    // if country represented by 2 letters, converting it to country ID before making a request
+    if (!/^-?\d+$/.test(country) && 2 === country.length) {
+      console.log('String to number')
+      const res = countries.find((el) => el.code === country)
+      if (res) {
+        country = res.smsHubId
+      } else {
+        throw new Error('Country ID is not found by 2 letter symbol code')
+      }
+    }
+    
     return this._request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
       .then((response) => {
         let [, id, number] = response.split(':')
