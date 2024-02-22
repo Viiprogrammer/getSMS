@@ -16,6 +16,10 @@
     font-display: swap;
 }
 
+:root {
+    --outer-wrapper-max-width: 65rem;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -148,6 +152,7 @@ blockquote {
     font-size: 0.875rem;
     padding: 0.0625rem 1.25rem;
     border-radius: 1rem;
+    margin: 0.5rem 0;
 }
 
 .details {
@@ -191,6 +196,7 @@ dt {
 .details pre.prettyprint {
     margin: 0;
 }
+
 /* stylelint-enable */
 
 .details .object-value {
@@ -526,7 +532,7 @@ code {
     display: flex;
     padding: 1rem 4rem 1rem 2rem;
     flex: 1;
-    max-width: 60rem;
+    max-width: var(--outer-wrapper-max-width);
 }
 
 .navbar-left-items {
@@ -595,7 +601,7 @@ code {
 
 .main-wrapper {
     width: 100%;
-    max-width: 60rem;
+    max-width: var(--outer-wrapper-max-width);
     padding: 0 4rem 1rem;
 }
 
@@ -619,7 +625,7 @@ code {
 .footer .wrapper {
     flex: 1;
     padding: 1rem 2rem;
-    max-width: 70rem;
+    max-width: var(--outer-wrapper-max-width);
 }
 
 pre {
@@ -636,8 +642,12 @@ pre {
 .hljs .hljs-ln-numbers {
     width: 2rem;
     white-space: nowrap;
-    user-select: none;
+    /* user-select: none; */
     padding-left: 1.5rem;
+}
+
+.hljs-ln-line.hljs-ln-numbers::before {
+    content: attr(data-line-number);
 }
 
 .pre-div {
@@ -656,7 +666,6 @@ pre {
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 1;
 }
 
 .code-copy-icon-container {
@@ -735,6 +744,12 @@ pre {
     right: 1rem;
 }
 
+.search-result-c-text {
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
 .search-result-c {
     min-height: 20rem;
     max-height: 40rem;
@@ -785,10 +800,12 @@ pre {
 .search-result-item-title {
     font-family: heading;
     font-size: 1.5rem;
+    margin: 0;
 }
 
 .search-result-item-p {
     font-size: 0.875rem;
+    margin: 0;
 }
 
 .mobile-menu-icon-container {
@@ -859,6 +876,10 @@ pre {
     overflow: auto;
 }
 
+.tag-default {
+    overflow: auto;
+}
+
 /* scroll bar */
 ::-webkit-scrollbar {
     width: 0.3125rem;
@@ -921,6 +942,7 @@ pre {
     .search-result-c {
         max-height: 25rem;
     }
+
     .mobile-menu-icon-container {
         display: block;
     }
@@ -928,6 +950,7 @@ pre {
     .sidebar-container {
         display: none;
     }
+
     .search-container .wrapper {
         margin-left: 1rem;
     }

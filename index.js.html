@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" style="font-size:16px"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>index.js</title><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en" style="font-size:16px"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Source: index.js</title><!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><script src="scripts/third-party/hljs.js" defer="defer"></script><script src="scripts/third-party/hljs-line-num.js" defer="defer"></script><script src="scripts/third-party/popper.js" defer="defer"></script><script src="scripts/third-party/tippy.js" defer="defer"></script><script src="scripts/third-party/tocbot.js"></script><script>var baseURL="/",locationPathname="",baseURL=(locationPathname=document.location.pathname).substr(0,locationPathname.lastIndexOf("/")+1)</script><link rel="stylesheet" href="styles/clean-jsdoc-theme.min.css"><svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none"><defs><symbol id="copy-icon" viewbox="0 0 488.3 488.3"><g><path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/><path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/></g></symbol><symbol id="search-icon" viewBox="0 0 512 512"><g><g><path d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z"/></g></g><g><g><path d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z"/></g></g></symbol><symbol id="font-size-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol><symbol id="add-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/></symbol><symbol id="minus-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z"/></symbol><symbol id="dark-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></symbol><symbol id="light-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></symbol><symbol id="reset-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.537 19.567A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.136-.67 4.116-1.81 5.74L17 12h3a8 8 0 1 0-2.46 5.772l.997 1.795z"/></symbol><symbol id="down-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"></path></symbol><symbol id="codepen-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.5 13.202L13 15.535v3.596L19.197 15 16.5 13.202zM14.697 12L12 10.202 9.303 12 12 13.798 14.697 12zM20 10.869L18.303 12 20 13.131V10.87zM19.197 9L13 4.869v3.596l3.5 2.333L19.197 9zM7.5 10.798L11 8.465V4.869L4.803 9 7.5 10.798zM4.803 15L11 19.131v-3.596l-3.5-2.333L4.803 15zM4 13.131L5.697 12 4 10.869v2.262zM2 9a1 1 0 0 1 .445-.832l9-6a1 1 0 0 1 1.11 0l9 6A1 1 0 0 1 22 9v6a1 1 0 0 1-.445.832l-9 6a1 1 0 0 1-1.11 0l-9-6A1 1 0 0 1 2 15V9z"/></symbol><symbol id="close-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></symbol><symbol id="menu-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/></symbol></defs></svg></head><body class="dark" data-theme="dark"><div class="sidebar-container"><div class="sidebar" id="sidebar"><a href="/" class="sidebar-title sidebar-title-anchor">Home</a><div class="sidebar-items-container"><div class="sidebar-section-title with-arrow" data-isopen="false" id="KDXnHwn2DJtQM1dga0P31"><div>Classes</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="GetSMS.html">GetSMS</a></div><div class="sidebar-section-children"><a href="ServiceApiError.html">ServiceApiError</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="nfG8mFMns2XUztDRJOpk-"><div>Global</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="global.html#additionalServiceResponse">additionalServiceResponse</a></div><div class="sidebar-section-children"><a href="global.html#BalanceObject">BalanceObject</a></div><div class="sidebar-section-children"><a href="global.html#fullSMSTextResponse">fullSMSTextResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div><div class="sidebar-section-children"><a href="global.html#InitProperties">InitProperties</a></div></div></div></div></div><div class="navbar-container" id="VuAckcnZhf"><nav class="navbar"><div class="navbar-left-items"></div><div class="navbar-right-items"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#light-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div><nav></nav></nav></div><div class="toc-container"><div class="toc-content"><span class="bold">On this page</span><div id="eed4d2a0bfd64539bb9df78095dec881"></div></div></div><div class="body-wrapper"><div class="main-content"><div class="main-wrapper"><section id="source-page" class="source-page"><header><h1 id="title" class="has-anchor">index.js</h1></header><article><pre class="prettyprint source lang-js"><code>const { request } = require('undici')
+    <![endif]--><script src="scripts/third-party/hljs.js" defer="defer"></script><script src="scripts/third-party/hljs-line-num.js" defer="defer"></script><script src="scripts/third-party/popper.js" defer="defer"></script><script src="scripts/third-party/tippy.js" defer="defer"></script><script src="scripts/third-party/tocbot.min.js"></script><script>var baseURL="/",locationPathname="";baseURL=(locationPathname=document.location.pathname).substr(0,locationPathname.lastIndexOf("/")+1)</script><link rel="stylesheet" href="styles/clean-jsdoc-theme.min.css"><svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none"><defs><symbol id="copy-icon" viewbox="0 0 488.3 488.3"><g><path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/><path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/></g></symbol><symbol id="search-icon" viewBox="0 0 512 512"><g><g><path d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z"/></g></g><g><g><path d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z"/></g></g></symbol><symbol id="font-size-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol><symbol id="add-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/></symbol><symbol id="minus-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z"/></symbol><symbol id="dark-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></symbol><symbol id="light-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></symbol><symbol id="reset-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.537 19.567A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.136-.67 4.116-1.81 5.74L17 12h3a8 8 0 1 0-2.46 5.772l.997 1.795z"/></symbol><symbol id="down-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"></path></symbol><symbol id="codepen-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.5 13.202L13 15.535v3.596L19.197 15 16.5 13.202zM14.697 12L12 10.202 9.303 12 12 13.798 14.697 12zM20 10.869L18.303 12 20 13.131V10.87zM19.197 9L13 4.869v3.596l3.5 2.333L19.197 9zM7.5 10.798L11 8.465V4.869L4.803 9 7.5 10.798zM4.803 15L11 19.131v-3.596l-3.5-2.333L4.803 15zM4 13.131L5.697 12 4 10.869v2.262zM2 9a1 1 0 0 1 .445-.832l9-6a1 1 0 0 1 1.11 0l9 6A1 1 0 0 1 22 9v6a1 1 0 0 1-.445.832l-9 6a1 1 0 0 1-1.11 0l-9-6A1 1 0 0 1 2 15V9z"/></symbol><symbol id="close-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></symbol><symbol id="menu-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/></symbol></defs></svg></head><body data-theme="dark"><div class="sidebar-container"><div class="sidebar" id="sidebar"><a href="/" class="sidebar-title sidebar-title-anchor">Home</a><div class="sidebar-items-container"><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-classes"><div>Classes</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="GetSMS.html">GetSMS</a></div><div class="sidebar-section-children"><a href="ServiceApiError.html">ServiceApiError</a></div><div class="sidebar-section-children"><a href="TimeoutError.html">TimeoutError</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-global"><div>Global</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="global.html#BalanceObject">BalanceObject</a></div><div class="sidebar-section-children"><a href="global.html#InitProperties">InitProperties</a></div><div class="sidebar-section-children"><a href="global.html#additionalServiceResponse">additionalServiceResponse</a></div><div class="sidebar-section-children"><a href="global.html#fullSMSTextResponse">fullSMSTextResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div></div></div></div></div><div class="navbar-container" id="VuAckcnZhf"><nav class="navbar"><div class="navbar-left-items"></div><div class="navbar-right-items"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#light-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div><nav></nav></nav></div><div class="toc-container"><div class="toc-content"><span class="bold">On this page</span><div id="eed4d2a0bfd64539bb9df78095dec881"></div></div></div><div class="body-wrapper"><div class="main-content"><div class="main-wrapper"><section id="source-page" class="source-page"><header><h1 id="title" class="has-anchor">index.js</h1></header><article><pre class="prettyprint source lang-js"><code>const { request } = require('undici')
 
 const errorsList = {
   BANNED: 'Account banned',
@@ -35,11 +35,24 @@ const supportedMethods = {
   ]
 }
 
+class TimeoutError extends Error {
+  /**
+   * TimeoutError class constructor
+   * @constructor
+   * @param {string} message
+   */
+  constructor (message) {
+    super()
+    this.message = message
+    this.name = this.constructor.name
+  }
+}
+
 class ServiceApiError extends Error {
   /**
    * ServiceApiError class constructor
    * @constructor
-   * @param code Sms service error string
+   * @param {string} code Sms service error string
    */
   constructor (code) {
     super()
@@ -49,9 +62,11 @@ class ServiceApiError extends Error {
       this.serverResponse = code
       this.code = 'BANNED'
       const datetime = code.split(':').pop()
+
       let [date, time] = datetime.split(/\s/)
       time = time.split('-').join(':')
       date = date.split('-').join('/')
+
       const obj = new Date(`${date} ${time}`)
 
       this.banTime = datetime
@@ -60,6 +75,7 @@ class ServiceApiError extends Error {
     } else {
       this.code = code
     }
+
     this.name = this.constructor.name
   }
 
@@ -68,8 +84,9 @@ class ServiceApiError extends Error {
    * @method
    * @static
    * @private
-   * @return boolean
-   * @param response Http request response string
+   *
+   * @param {string} response Http request response string
+   * @return {boolean}
    */
   static _check (response) {
     return Object.keys(errorsList).includes(response) &amp;&amp; (response.indexOf('BANNED:') !== 0)
@@ -78,35 +95,32 @@ class ServiceApiError extends Error {
 
 class GetSMS {
   /**
-   * Enum for tri-state values.
-   * @enum {number}
-   */
-
-  /**
-   * @typedef InitProperties
-   * @type {object}
-   * @property {string} key - Service API key
-   * @property {string} url - Service endpoint url
-   * @property {string} [secondUrl=https://smshub.org/api.php] - Used for method &lt;code>getListOfCountriesAndOperators&lt;/code> (only SMSHUB)
-   * @property {(en|ru)} [lang=ru] - Lang code, smshub can returns results with russian  or english (Only smshub)
-   * @property {(smshub|smsactivate)} service - Service name
-   * @property {interval} [interval=2000] - Polling interval of getCode method
+   * @typedef {object} InitProperties
+   * @property {string} key Service API key
+   * @property {string} url Service endpoint url
+   * @property {string} [secondUrl=https://smshub.org/api.php] Used for method `getListOfCountriesAndOperators` (only SMSHUB)
+   * @property {'en'|'ru'} [lang=ru] Lang code, smshub can return results with russian  or english (Only smshub)
+   * @property {'smshub'|'smsactivate'} service Service name
+   * @property {number} [interval=2000] Polling interval of getCode method
    */
 
   /**
    * GetSMS class constructor
    * @constructor
-   * @returns GetSMS
-   * @param {InitProperties} - Options object
-   * @throws Error
+   *
+   * @param {InitProperties} options Options object
+   * @throws {Error}
+   * @returns {GetSMS}
    */
   constructor ({ key, url, secondUrl = 'https://smshub.org/api.php', service, lang = 'ru', interval = 2000 }) {
     if (!key || !url || !service) {
       throw new Error('Missing argument(s)')
     }
+
     if (!['smshub', 'smsactivate'].includes(service)) {
       throw new Error('Invalid service name')
     }
+
     this._key = key
     this._url = url
     this._lang = lang
@@ -135,14 +149,13 @@ class GetSMS {
    * Method for sending API requests
    * @method
    * @private
-   * @async
+   *
+   * @param {object} qs Query string params
+   * @param {string} method Request METHOD
+   * @param {object} [form] Form object
+   * @param {boolean} [second=false] Use second API endpoint
+   * @throws {Error|ServiceApiError}
    * @returns {Promise&lt;object|string>}
-   * @param {object} qs - Query string params
-   * @param {string} method - Request METHOD
-   * @param {object|undefined} form - Form object
-   * @param {boolean} [second=false] - Use second API endpoint
-   * @throws Error
-   * @throws ServiceApiError
    */
   async _request (qs, { method = 'GET', form, second = false } = {}) {
     const url = new URL(second ? this._secondUrl : this._url)
@@ -178,66 +191,64 @@ class GetSMS {
    * Method for getting number status
    * @method
    * @public
-   * @async
+   *
+   * @param {string|number} [country] Country ID
+   * @param {string} [operator] Mobile operator code name
+   * @throws {Error|ServiceApiError}
    * @returns {object}
-   * @param {string|number} [country] - Country ID
-   * @param {string} [operator] - Mobile operator code name
-   * @throws Error
-   * @throws ServiceApiError
    */
-  getNumbersStatus (country, operator) {
+  async getNumbersStatus (country, operator) {
     return this._request({ action: 'getNumbersStatus', country, operator })
   }
 
   /**
-   * @typedef BalanceObject
-   * @type {object}
-   * @property {string} balance_string - Balance as string
-   * @property {number} balance_float - Balance as float number
-   * @property {number} balance_number - Balance as multiplied by 100 as integer number
+   * @typedef {object} BalanceObject
+   * @property {string} balance_string Balance as string
+   * @property {number} balance_float Balance as float number
+   * @property {number} balance_number Balance as multiplied by 100 as integer number
    */
 
   /**
    * Method for getting account balance
    * @method
    * @public
-   * @async
+   *
+   * @throws {Error|ServiceApiError}
    * @returns {Promise&lt;BalanceObject>}
-   * @throws Error
-   * @throws ServiceApiError
    */
-  getBalance () {
-    return this._request({ action: 'getBalance' })
-      .then((response) => {
-        const [, balance] = response.split(':')
-        const balanceParsed = parseFloat(balance)
-        return {
-          balance_string: balance,
-          balance_float: balanceParsed,
-          balance_number: balanceParsed * 100
-        }
-      })
+  async getBalance () {
+    const response = await this._request({ action: 'getBalance' })
+
+    const [, balance] = response.split(':')
+    const balanceParsed = parseFloat(balance)
+
+    return {
+      balance_string: balance,
+      balance_float: balanceParsed,
+      balance_number: balanceParsed * 100
+    }
   }
 
   /**
    * Method for getting number for using with several services (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @param {array|string} service - Array of services names
-   * @param {array|string} operator - Array of operators names
-   * @param {string|number} country - Country ID
-   * @param {(Array&lt;(string|number)>|(number|string))} [forward] - Number forward, must have values 1 or 0 *
-   * @param [ref] - Referral identifier
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
    * @example
    * .getMultiServiceNumber('ok,vk,vi,av', 'mts', 0, '0,1,0,0')
+   *
    * @example
    * .getMultiServiceNumber(['ok','vk','vi','av'], 'mts', 0, [0, 1, 0, 0])
+   *
+   * @param {array|string} service Array of services names
+   * @param {array|string} operator Array of operators names
+   * @param {string|number} country Country ID
+   * @param {Array&lt;string|number>|string} [forward] Number forward, must have values 1 or 0 *
+   * @param {string} [ref] Referral identifier
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getMultiServiceNumber (service, operator, country, forward, ref) {
+  async getMultiServiceNumber (service, operator, country, forward, ref) {
     if (Array.isArray(service)) service = service.toString()
     if (Array.isArray(forward)) forward = forward.toString()
     if (Array.isArray(operator)) operator = operator.toString()
@@ -245,75 +256,72 @@ class GetSMS {
   }
 
   /**
-   * @typedef additionalServiceResponse
-   * @type {object}
-   * @property {string} id - Status code
-   * @property {string} number - Text from SMS
+   * @typedef {object} additionalServiceResponse
+   * @property {string} id Status code
+   * @property {string} number Text from SMS
    */
 
   /**
    * Method for getting additional service for numbers with forward (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @param {string} id - Mobile number ID
-   * @param {string} service - Service code name
+   *
+   * @param {string} id Mobile number ID
+   * @param {string} service Service code name
    * @returns {Promise&lt;additionalServiceResponse>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @throws {Error|ServiceApiError}
    */
-  getAdditionalService (id, service) {
-    return this._request({ action: 'getAdditionalService', id, service })
-      .then((response) => {
-        const [, id, number] = response.split(':')
-        return {
-          id,
-          number
-        }
-      })
+  async getAdditionalService (id, service) {
+    const response = await this._request({ action: 'getAdditionalService', id, service })
+
+    const [, _id, number] = response.split(':')
+
+    return {
+      id: _id,
+      number
+    }
   }
 
   /**
-   * @typedef fullSMSTextResponse
-   * @type {object}
-   * @property {string} status - Status code
-   * @property {string|undefined} text - Text from SMS. Is returning &lt;i>&lt;b>only if status is not &lt;code>STATUS_WAIT_CODE&lt;/code>, &lt;code>STATUS_CANCEL&lt;/code>&lt;/b>&lt;/i>
+   * @typedef {object} fullSMSTextResponse
+   * @property {string} status Status code
+   * @property {string} [text] Text from SMS. Is returning _**only if status is not `STATUS_WAIT_CODE`, `STATUS_CANCEL`**_
    */
 
   /**
    * Method for getting full sms text (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @param {string|number} id - Mobile number ID
+   *
+   * @param {string|number} id Mobile number ID
    * @returns {Promise&lt;fullSMSTextResponse>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @throws {Error|ServiceApiError}
    */
-  getFullSms (id) {
-    return this._request({ action: 'getFullSms', id })
-      .then((response) => {
-        const [status, text] = response.split(':')
-        const res = { status }
-        if (['STATUS_WAIT_CODE', 'STATUS_CANCEL'].includes(status)) {
-          return res
-        } else if (status === 'FULL_SMS') {
-          res.text = text
-          return res
-        }
-      })
+  async getFullSms (id) {
+    const response = await this._request({ action: 'getFullSms', id })
+
+    const [status, text] = response.split(':')
+    const res = { status }
+
+    if (['STATUS_WAIT_CODE', 'STATUS_CANCEL'].includes(status)) {
+      return res
+    }
+
+    if (status === 'FULL_SMS') {
+      res.text = text
+      return res
+    }
   }
 
   /**
    * Method for getting countries list (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getCountries () {
+  async getCountries () {
     return this._request({ action: 'getCountries' })
   }
 
@@ -321,24 +329,21 @@ class GetSMS {
    * Method for getting Qiwi payment requisites (only for smsactivate)
    * @method
    * @public
-   * @async
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getQiwiRequisites () {
+  async getQiwiRequisites () {
     return this._request({ action: 'getQiwiRequisites' })
   }
 
   /**
    * Unofficial / hidden method for getting list of countries &amp; operators (only for smshub)
+   *
    * @method
    * @public
-   * @async
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
-   * @example &lt;caption>Answer example:&lt;/caption>
+   *
+   * @example Answer example:
    * {
    *     status: "success",
    *     services: [{
@@ -358,8 +363,11 @@ class GetSMS {
    *     currentCountry: "0",
    *     currentOperator: "any"
    * }
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getListOfCountriesAndOperators () {
+  async getListOfCountriesAndOperators () {
     return this._request({
       cat: 'scripts',
       act: 'manageActivations',
@@ -372,32 +380,30 @@ class GetSMS {
 
   /**
    * Unofficial / hidden method for changing default number settings (only for smshub)
-   * Change max price of mobile number for coutry id, enable / disable random
+   * Change max price of mobile number for country id, enable / disable random
    * &lt;br>&lt;br>&lt;div style="color: yellow">WARNING: I don't know why, but really values changed only  after ~30 seconds, maybe it's cached on smshub server&lt;/div>
+   *
    * @method
    * @public
-   * @async
-   * @param {string} service - Service code name
-   * @param {string|number} maxPrice - Max buy price
-   * @param {boolean} random - Enable random number
-   * @param {string|number} country - Country ID
+   *
+   * @param {string} service Service code name
+   * @param {string|number} maxPrice Max buy price
+   * @param {boolean} random Enable random number
+   * @param {string|number} country Country ID
+   * @throws {Error|ServiceApiError}
    * @returns {Promise}
-   * @throws Error
-   * @throws ServiceApiError
    */
-  setMaxPrice (service, maxPrice, random = true, country) {
+  async setMaxPrice (service, maxPrice, random = true, country) {
     return this._request({ action: 'setMaxPrice', service, maxPrice, country, random })
   }
 
   /**
    * Unofficial / hidden method for getting list of current activations (only for smshub)
+   *
    * @method
    * @public
-   * @async
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
-   * @example &lt;caption>Answer example:&lt;/caption>
+   *
+   * @example Answer example:
    * // Success request:
    *
    * {
@@ -425,77 +431,77 @@ class GetSMS {
    *
    * // No activations:
    * { status: 'fail', msg: 'no_activations' }
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getCurrentActivations () {
+  async getCurrentActivations () {
     return this._request({ action: 'getCurrentActivations' })
   }
 
   /**
-   * @typedef getCodeResponse
-   * @type {object}
-   * @property {string} status - Status code
-   * @property {string|undefined} code - Code from SMS
+   * @typedef {object} getCodeResponse
+   * @property {string} status Status code
+   * @property {string|undefined} code Code from SMS
    */
 
   /**
    * Method for getting new number
    * Arguments with * available only for smsactivate
+   *
    * @method
    * @public
-   * @async
-   * @param {string} service - Service code name
-   * @param {string} [operator] - Mobile operator code name
-   * @param {string|number} [country] - Country ID
-   * @param {(string|number)} [forward] - Number forward, must be &lt;code>1&lt;/code> or &lt;code>0&lt;/code> *
-   * @param {string} [phoneException] - Prefixes for excepting mobile numbers separated by comma *
-   * @param {string} [ref] - Referral identifier *
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @param {string} service Service code name
+   * @param {string} [operator] Mobile operator code name
+   * @param {string|number} [country] Country ID
+   * @param {string|number} [forward] Number forward, must be `1` or `0` *
+   * @param {string} [phoneException] Prefixes for excepting mobile numbers separated by comma *
+   * @param {string} [ref] Referral identifier *
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getNumber (service, operator, country, forward, phoneException, ref) {
-    return this._request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
-      .then((response) => {
-        const [, id, number] = response.split(':')
-        return {
-          id,
-          number
-        }
-      })
+  async getNumber (service, operator, country, forward, phoneException, ref) {
+    const response = await this._request({ action: 'getNumber', service, operator, country, forward, phoneException, ref })
+
+    const [, id, number] = response.split(':')
+
+    return {
+      id,
+      number
+    }
   }
 
   /**
    * Method for set number status
    * @method
    * @public
-   * @async
-   * @param {string|number} status - New mobile number status
-   * @param {string|number} id - Mobile number ID
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
+   * @param {string|number} status New mobile number status
+   * @param {string|number} id Mobile number ID
+   *
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  setStatus (status, id) {
-    return this._request({ action: 'setStatus', status, id })
-      .then(status => ({ status }))
+  async setStatus (status, id) {
+    const response = await this._request({ action: 'setStatus', status, id })
+
+    return { status: response }
   }
 
   /**
-   * @typedef getCodeResponse
-   * @type {object}
-   * @property {string} status - Status code
-   * @property {string|undefined} code - Code from SMS. Is returning &lt;i>&lt;b>only with &lt;code>STATUS_WAIT_RETRY&lt;/code>, &lt;code>STATUS_OK&lt;/code> statuses&lt;/b>&lt;/i>
+   * @typedef {object} getCodeResponse
+   * @property {string} status Status code
+   * @property {string|undefined} code Code from SMS. Is returning _**only with `STATUS_WAIT_RETRY`, `STATUS_OK` statuses**_
    */
 
   /**
    * Method which polling with getStatus method and returns new status when it's changes
+   *
    * @method
    * @public
-   * @async
-   * @param {string|number} id - Mobile number ID
-   * @returns {Promise&lt;getCodeResponse>}
-   * @throws Error
-   * @throws ServiceApiError
+   *
    * @example
    * const { id, number } = await sms.getNumber('vk', 'mts', 0)
    * console.log('Number ID:', id);
@@ -505,25 +511,52 @@ class GetSMS {
    * const { code } = await sms.getCode(id)
    * console.log('Code:', code)
    * await sms.setStatus(1, id) //Accept, end
+   *
+   * @param {string|number} id - Mobile number ID
+   * @param {number} [timeout=0] - Timeout, after reached - forcefully stop and throw `TimeoutError`, pass 0 to disable
+   * @throws {Error|ServiceApiError|TimeoutError}
+   * @returns {Promise&lt;getCodeResponse>}
    */
-  getCode (id) {
+  async getCode (id, timeout = 0) {
     return new Promise((resolve, reject) => {
-      const interval = setInterval(() => {
-        this.getStatus(id).then(({ status, code }) => {
+      let timeoutId = null
+
+      const interval = setInterval(async () => {
+        try {
+          const {
+            status,
+            code
+          } = await this.getStatus(id)
+
           // eslint-disable-next-line no-empty
           if (status === 'STATUS_WAIT_CODE') {}
 
           if (status === 'STATUS_CANCEL') {
             clearInterval(interval)
+            if (timeoutId) clearTimeout(timeoutId)
             resolve({ status })
           }
 
           if (status === 'STATUS_OK') {
             clearInterval(interval)
+            if (timeoutId) clearTimeout(timeoutId)
             resolve({ code })
           }
-        }).catch(err => reject(err))
+        } catch (err) {
+          clearInterval(interval)
+          if (timeoutId) clearTimeout(timeoutId)
+          reject(err)
+        }
       }, this._interval)
+
+      if (timeout) {
+        timeoutId = setTimeout(() => {
+          clearInterval(interval)
+          clearTimeout(timeoutId)
+
+          reject(new TimeoutError(`Timeout ${timeout}ms reached`))
+        }, timeout)
+      }
     })
   }
 
@@ -531,42 +564,40 @@ class GetSMS {
    * Method for getting number status
    * @method
    * @public
-   * @async
-   * @param {string|number} id - Mobile number ID
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @param {string|number} id Mobile number ID
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getStatus (id) {
-    return this._request({ action: 'getStatus', id })
-      .then((response) => {
-        if (['STATUS_CANCEL', 'STATUS_WAIT_RESEND', 'STATUS_WAIT_CODE'].includes(response)) {
-          return { status: response }
-        } else {
-          const [type, code] = response.split(':')
-          if (type === 'STATUS_WAIT_RETRY') {
-            return { status: type, code }
-          }
-          if (type === 'STATUS_OK') {
-            return { status: type, code }
-          }
-          return { status: 'UNKNOWN' }
-        }
-      })
+  async getStatus (id) {
+    const response = await this._request({ action: 'getStatus', id })
+
+    if (['STATUS_CANCEL', 'STATUS_WAIT_RESEND', 'STATUS_WAIT_CODE'].includes(response)) {
+      return { status: response }
+    }
+
+    const [type, code] = response.split(':')
+
+    if (type === 'STATUS_WAIT_RETRY') {
+      return { status: type, code }
+    }
+
+    if (type === 'STATUS_OK') {
+      return { status: type, code }
+    }
+
+    return { status: 'UNKNOWN' }
   }
 
   /**
    * Method for getting numbers prices
    * @method
    * @public
-   * @async
-   * @param {string|number} [country] - Country ID
-   * @param {string} service - Service code name
-   * @returns {Promise&lt;Object>}
-   * @throws Error
-   * @throws ServiceApiError
+   * @param {string|number} [country] Country ID
+   * @param {string} service Service code name
+   * @throws {Error|ServiceApiError}
+   * @returns {Promise&lt;object>}
    */
-  getPrices (service, country) {
+  async getPrices (service, country) {
     return this._request({ action: 'getPrices', country, service })
   }
 }
@@ -574,9 +605,10 @@ class GetSMS {
 module.exports = {
   GetSMS,
   ServiceApiError,
+  TimeoutError,
   errors: Object.fromEntries(
     Object.keys(errorsList)
       .map(e => [e, e])
   )
 }
-</code></pre></article></section></div></div></div><div class="search-container" id="PkfLWpAbet" style="display:none"><div class="wrapper" id="iCxFxjkHbP"><button class="icon-button search-close-button" id="VjLlGakifb" aria-label="close search"><svg><use xlink:href="#close-icon"></use></svg></button><div class="search-box-c"><svg><use xlink:href="#search-icon"></use></svg> <input type="text" id="vpcKVYIppa" class="search-input" placeholder="Search..." autofocus></div><div class="search-result-c" id="fWwVHRuDuN">Type anything to view search result</div></div></div><div class="mobile-menu-icon-container"><button class="icon-button" id="mobile-menu" data-isopen="false" aria-label="menu"><svg><use xlink:href="#menu-icon"></use></svg></button></div><div id="mobile-sidebar" class="mobile-sidebar-container"><div class="mobile-sidebar-wrapper"><a href="/" class="sidebar-title sidebar-title-anchor">Home</a><div class="mobile-nav-links"></div><div class="mobile-sidebar-items-c"><div class="sidebar-section-title with-arrow" data-isopen="false" id="KDXnHwn2DJtQM1dga0P31"><div>Classes</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="GetSMS.html">GetSMS</a></div><div class="sidebar-section-children"><a href="ServiceApiError.html">ServiceApiError</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="nfG8mFMns2XUztDRJOpk-"><div>Global</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="global.html#additionalServiceResponse">additionalServiceResponse</a></div><div class="sidebar-section-children"><a href="global.html#BalanceObject">BalanceObject</a></div><div class="sidebar-section-children"><a href="global.html#fullSMSTextResponse">fullSMSTextResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div><div class="sidebar-section-children"><a href="global.html#InitProperties">InitProperties</a></div></div></div><div class="mobile-navbar-actions"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#light-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div></div></div><script type="text/javascript" src="scripts/core.min.js"></script><script src="scripts/search.min.js" defer="defer"></script><script src="scripts/third-party/fuse.js" defer="defer"></script><script type="text/javascript">tocbot.init({tocSelector:"#eed4d2a0bfd64539bb9df78095dec881",contentSelector:".main-content",headingSelector:"h1, h2, h3",hasInnerContainers:!0,scrollContainer:".main-content",headingsOffset:130,onClick:bringLinkToView})</script></body></html>
+</code></pre></article></section></div></div></div><div class="search-container" id="PkfLWpAbet" style="display:none"><div class="wrapper" id="iCxFxjkHbP"><button class="icon-button search-close-button" id="VjLlGakifb" aria-label="close search"><svg><use xlink:href="#close-icon"></use></svg></button><div class="search-box-c"><svg><use xlink:href="#search-icon"></use></svg> <input type="text" id="vpcKVYIppa" class="search-input" placeholder="Search..." autofocus></div><div class="search-result-c" id="fWwVHRuDuN"><span class="search-result-c-text">Type anything to view search result</span></div></div></div><div class="mobile-menu-icon-container"><button class="icon-button" id="mobile-menu" data-isopen="false" aria-label="menu"><svg><use xlink:href="#menu-icon"></use></svg></button></div><div id="mobile-sidebar" class="mobile-sidebar-container"><div class="mobile-sidebar-wrapper"><a href="/" class="sidebar-title sidebar-title-anchor">Home</a><div class="mobile-nav-links"></div><div class="mobile-sidebar-items-c"><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-classes"><div>Classes</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="GetSMS.html">GetSMS</a></div><div class="sidebar-section-children"><a href="ServiceApiError.html">ServiceApiError</a></div><div class="sidebar-section-children"><a href="TimeoutError.html">TimeoutError</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-global"><div>Global</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="global.html#BalanceObject">BalanceObject</a></div><div class="sidebar-section-children"><a href="global.html#InitProperties">InitProperties</a></div><div class="sidebar-section-children"><a href="global.html#additionalServiceResponse">additionalServiceResponse</a></div><div class="sidebar-section-children"><a href="global.html#fullSMSTextResponse">fullSMSTextResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div><div class="sidebar-section-children"><a href="global.html#getCodeResponse">getCodeResponse</a></div></div></div><div class="mobile-navbar-actions"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#light-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div></div></div><script type="text/javascript" src="scripts/core.min.js"></script><script src="scripts/search.min.js" defer="defer"></script><script src="scripts/third-party/fuse.js" defer="defer"></script><script type="text/javascript">var tocbotInstance=tocbot.init({tocSelector:"#eed4d2a0bfd64539bb9df78095dec881",contentSelector:".main-content",headingSelector:"h1, h2, h3",hasInnerContainers:!0,scrollContainer:".main-content",headingsOffset:130,onClick:bringLinkToView})</script></body></html>
